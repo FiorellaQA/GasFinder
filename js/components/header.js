@@ -8,4 +8,4 @@ const Header = (update) => {
 	header.append(title);
 
 	return header;
-}
+};
