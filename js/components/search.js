@@ -1,9 +1,9 @@
 'use strict';
 
 const StationItem = (station,update)=>{
-    const stationItem = $("<div></div>");
+    const stationItem = $("<div class='stationItem'></div>");
 
-    const name = $("<span>"+station.name+"</span>");
+    const name = $("<span class='bold'>"+station.name+"</span>");
     const address = $("<p>"+station.address+"</p>");
     const district = $("<p>"+station.district+"</p>");
 
@@ -35,17 +35,31 @@ const reRender = (listStations,filterStation,update)=>{
     });
 };
 const Search = (update) => {
-    const containerSearch = $("<section id='search'></section>");
-	const containerInput = $("<div></div>");
+    const containerGeneral = $("<section></section>");
+    const containerSearch = $(("<div class='bg-red p-7'></div>");
+
+	const containerInput = $("<div class='bg-white p-7'></div>");
 	const input = $("<input type='text' placeholder='Ingresa tu distrito a buscar'/>");
     const iconSearch = $("<i class='fa fa-search'></i>");
+
     const listStations = $("<div class='list-stations'></div>");
 
     containerInput.append(input);
     containerInput.append(iconSearch);
 
     containerSearch.append(containerInput);
-    containerSearch.append(listStations);
+
+    state.stations.forEach(station=>{
+        listStations.append(StationItem(station, update));
+
+    });
+
+    containerGeneral.append(containerSearch);
+    containerGeneral.append(listStations);
+
+
+
+
 
     input.on("keyup", () =>{
         if(input.val() != ""){
@@ -55,5 +69,5 @@ const Search = (update) => {
         reRender(listStations,filterStation,update);
     });
 
-	return containerSearch;
+	return containerGeneral;
 };
