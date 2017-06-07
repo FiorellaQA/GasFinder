@@ -36,7 +36,7 @@ const reRender = (listStations,filterStation,update)=>{
 };
 const Search = (update) => {
     const containerGeneral = $("<section></section>");
-    const containerSearch = $(("<div class='bg-red p-7'></div>");
+    const containerSearch = $("<div class='bg-red p-7'></div>");
 
 	const containerInput = $("<div class='bg-white p-7'></div>");
 	const input = $("<input type='text' placeholder='Ingresa tu distrito a buscar'/>");
